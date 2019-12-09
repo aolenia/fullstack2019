@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { exec } from 'child_process'
 
 const Header = (props) => {
     return(<h1>{props.course}</h1>
@@ -9,9 +10,9 @@ const Header = (props) => {
 const Content = (props) => {
     return(
         <div>
-            <Part part={props.parts[0]} amount={props.exercises[0]} />
-            <Part part={props.parts[1]} amount={props.exercises[2]} />
-            <Part part={props.parts[2]} amount={props.exercises[3]} />
+            <Part part={props.parts[0].name} amount={props.parts[0].exercises} />
+            <Part part={props.parts[1].name} amount={props.parts[1].exercises} />
+            <Part part={props.parts[2].name} amount={props.parts[2].exercises} /> 
         </div>
     )
 }
@@ -22,7 +23,14 @@ const Part = (props) => {
 }
 
 const Total = (props) => {
-    return(<p> Number of exercises {props.amount} </p>
+    let sum = 0
+    props.amount.forEach(element => {
+        console.log(element.exercises)
+        sum = sum + element.exercises
+    });
+    
+
+    return(<p> Number of exercises {sum} </p>
     )
 }
 
@@ -44,7 +52,6 @@ const App = () => {
     </div>
   )
 }
-*/
 const App = () => {
     const course = 'Half Stack application development'
     const part1 = {
@@ -69,5 +76,32 @@ const App = () => {
         </div>
       )
   }
+  */
+ const App = () => {
+    const course = 'Half Stack application development'
+    const parts = [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
+  
+    return (
+        <div>
+        <Header course={course} />
+        <Content parts={parts} />
+        <Total amount={parts} />
+    </div>
+    )
+  }
+
 
 ReactDOM.render(<App />, document.getElementById('root'))
