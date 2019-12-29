@@ -35,7 +35,7 @@ const Header = ({name}) => {
     },0)*/
   
       const total1 = parts.reduce((sum, part) => console.log('DEBUG', sum, part.exercises) || sum + part.exercises,0)    
-      return(<h4> Number of exercises {total1} </h4>
+      return(<h4> total of {total1} exercises</h4>
       )
   }
 
