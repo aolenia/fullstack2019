@@ -80,9 +80,9 @@ const App = () => {
       <PersonForm 
         newName={newName}
         newNumber={newNumber}
-        handleNameChange={() => handleNameChange}
-        handleNumberChange={() => handleNumberChange}
-        addPerson={() => addPerson}
+        handleNameChange={handleNameChange}
+        handleNumberChange={handleNumberChange}
+        addPerson={addPerson}
       />
       <h2>Numbers</h2>
       <div>
