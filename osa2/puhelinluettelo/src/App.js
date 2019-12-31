@@ -66,9 +66,10 @@ const App = () => {
     if(result){
       personService
       .deleteRequest(person.id)
-      .then(
-        setNotification(`Deleted ${name} from phonebook`)
-      )
+      .then(() => {
+        setPersons(persons.filter(p => p.id !== person.id))
+      })
+      setNotification(`Deleted ${name} from phonebook`)
     }
     }
 
